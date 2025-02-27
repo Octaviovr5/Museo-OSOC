@@ -141,57 +141,45 @@
                     </div>
 
                     <script>
-                         pannellum.viewer('panorama', {
-                             type: "equirectangular",
-                             panorama: "images/panfinal.png",
-                             autoLoad: true,
-                             showZoomCtrl: true,
-                             showFullscreenCtrl: true,  // Habilitar pantalla completa
-                             yaw: 180,  // Ángulo inicial
-                             orientationOnByDefault: true ,
-                             hfov: 110,  // Campo de visión
-                             pitch: 0,
-                             autoRotate: 2,
-                             vr: true , // Habilitar modo VR
-                             showControls: true ,  // Habilita los controles
-                             config: { "default": { "firstScene": "sceneId" } } ,
-                             showControls: true ,
-                             touchPan: true
-                         });
-                         viewer.toggleVR();
-
-                         if (typeof DeviceMotionEvent.requestPermission === 'function') {
-                              DeviceMotionEvent.requestPermission()
-                                  .then(permissionState => {
-                                      if (permissionState === 'granted') {
-                                          console.log("Giroscopio activado");
-                                      }
-                                  })
-                                  .catch(console.error);
-                          }
-
-                          viewer.toggleVR();
-
-                          function requestGyroscopePermission() {
-                              if (typeof DeviceMotionEvent.requestPermission === 'function') {
-                                  DeviceMotionEvent.requestPermission()
-                                      .then(response => {
-                                          if (response === 'granted') {
-                                              startPanorama();
-                                          } else {
-                                              alert("Acceso al giroscopio denegado. Actívalo en la configuración del navegador.");
-                                          }
-                                      })
-                                      .catch(console.error);
-                              } else {
-                                  startPanorama(); // Si no es necesario pedir permisos, inicia el panorama
-                              }
-                          }
-                      
-                          // Iniciar el panorama cuando se cargue la página
-                          window.addEventListener("load", requestGyroscopePermission);
-
-
+                         let viewer;
+                     
+                         function startPanorama() {
+                             viewer = pannellum.viewer('panorama', {
+                                 type: "equirectangular",
+                                 panorama: "images/panfinal.png",
+                                 autoLoad: true,
+                                 showZoomCtrl: true,
+                                 showFullscreenCtrl: true,  // Habilitar pantalla completa
+                                 yaw: 180,  // Ángulo inicial
+                                 hfov: 110,  // Campo de visión
+                                 pitch: 0,
+                                 autoRotate: 2,
+                                 vr: true,  // Habilitar modo VR
+                                 showControls: true,  // Habilita los controles
+                                 touchPan: true,  // Permitir mover con el dedo
+                                 orientationOnByDefault: true  // Habilitar giroscopio
+                             });
+                         }
+                     
+                         function requestGyroscopePermission() {
+                             if (typeof DeviceMotionEvent.requestPermission === 'function') {
+                                 DeviceMotionEvent.requestPermission()
+                                     .then(response => {
+                                         if (response === 'granted') {
+                                             console.log("Giroscopio activado");
+                                             startPanorama();
+                                         } else {
+                                             alert("Acceso al giroscopio denegado. Actívalo en la configuración del navegador.");
+                                         }
+                                     })
+                                     .catch(console.error);
+                             } else {
+                                 startPanorama(); // Si el permiso no es necesario, inicia el visor directamente
+                             }
+                         }
+                     
+                         // Iniciar el panorama cuando se cargue la página
+                         window.addEventListener("load", requestGyroscopePermission);
                      </script>
                      
 
