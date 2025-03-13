@@ -6,12 +6,29 @@
 
 <title>Museo OSOC</title>
 
+<!-- Compatibilidad y metadatos básicos -->
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="Tooplate">
+<meta name="description" content="Un punto de encuentro para artistas y amantes del arte, OSOC ofrece exposiciones, talleres y eventos que exploran las tendencias más actuales. Descubre un museo que rompe las reglas y redefine la creatividad.">
+<meta name="keywords" content="arte contemporáneo, exposiciones, museo, creatividad, OSOC">
+<meta name="author" content="Octavio Velazquez">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" type="image/png" href="images/museo.png">
+
+<!-- Open Graph (Facebook & WhatsApp) -->
+<meta property="og:title" content="Museo OSOC">
+<meta property="og:description" content="Explora el arte contemporáneo como nunca antes. Exposiciones inmersivas, talleres y eventos en un museo innovador.">
+<meta property="og:image" content="https://i.imgur.com/XXbyIow.png">  <!-- URL completa de la imagen -->
+<meta property="og:url" content="https://octaviovr5.github.io/Museo-OSOC/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Museo OSOC">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Museo OSOC">
+<meta name="twitter:description" content="Explora el arte contemporáneo como nunca antes. Exposiciones inmersivas, talleres y eventos en un museo innovador.">
+<meta name="twitter:image" content="https://i.imgur.com/XXbyIow.png">  <!-- URL completa de la imagen -->
+<meta name="twitter:site" content="@TuUsuarioTwitter">
+
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
@@ -25,17 +42,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
 
+<!-- animate csss -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
 
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
 <!-- PRE LOADER -->
-<div class="preloader">
+<!-- <div class="preloader">
      <div class="spinner">
           <span class="spinner-rotate"></span>
      </div>
-</div>
+</div> -->
 
+
+<div class="cargador">
+     <div class="spinner">
+       <img src="images/siluetag.gif" alt="Cargando...">
+     </div>
+   </div>
+   
 
 <!-- HOME SECTION -->
 <div class="container">
@@ -44,10 +74,10 @@
 
                <div class="col-md-offset-1 col-md-10 col-sm-12">
                     <div class="home-wrapper">
-                         <h3 class="wow fadeInUp" data-wow-delay="0.4s">Museo OSOC </h3> 
+                         <h3 class="wow fadeInUp" data-wow-delay="0.3s">Museo OSOC </h3> 
                          <h1 class="wow fadeInUp" data-wow-delay="0.6s">Un espacio único diseñado para explorar, sentir y vivir el arte del presente. <br>Donde el arte nace de la oscuridad y los sueños se transforman en creación.</h1>
                          <a href="#about" class="wow fadeInUp smoothScroll arrow-btn" data-wow-delay="1s"><i class="fa fa-angle-double-down"></i></a>
-                         <h3 id="origen">Origen, Sueño, Oscuridad y Creación</h3>
+                         <h3 class="wow fadeInUp" data-wow-delay="0.8s" id="origen">Origen, Sueño, Oscuridad y Creación</h3>
                     </div>
                </div>
 
@@ -62,7 +92,7 @@
           <div class="row">
 
                <div class="col-md-4 col-sm-8">
-                    <img src="images/maquetaterbl.png" class="wow fadeInUp img-responsive" data-wow-delay="0.2s" alt="about image">
+                    <img src="images/maquetaterbl.png" class="wow fadeInUp img-responsive" data-wow-delay="1s" alt="about image">
                     <div class="wow fadeInUp" data-wow-delay="0.4s">
                          <h4>Sobre el Museo</h4>
                          <p> "Museo <b>OSOC</b> es un espacio innovador donde el arte contemporáneo se vive, se explora y se transforma. Su arquitectura vanguardista y sus exposiciones inmersivas desafían las percepciones, creando experiencias únicas para el público. Aquí, el arte no solo se observa, sino que se experimenta a través de instalaciones interactivas, tecnología y expresiones audaces."</p>
@@ -79,10 +109,11 @@
                          <div class="wow fadeInUp section-title" data-wow-delay="0.6s">
                               <h3 id="letra-segundotema">OSOC</h3>
                               <h2>"Cada exposición en OSOC es una ventana al futuro. Con artistas que rompen moldes y desafían lo conocido, aquí experimentarás el arte como nunca antes."</h2>
+                              <img class="img-responsive" src="images/facadaia.png" alt="entrada" id="imgentrada" >
                          </div>
                          <div class="wow fadeInUp" data-wow-delay="0.8s">
-                                   <!-- Un punto de encuentro para artistas y amantes del arte, OSOC ofrece exposiciones, talleres y eventos que exploran las tendencias más actuales. Descubre un museo que rompe las reglas y redefine la creatividad. --></h4>
-                                        <img class="img-responsive" src="images/facadaia.png" alt="entrada" id="imgentrada">
+                                   <!-- Un punto de encuentro para artistas y amantes del arte, OSOC ofrece exposiciones, talleres y eventos que exploran las tendencias más actuales. Descubre un museo que rompe las reglas y redefine la creatividad.</h4> -->
+                                        
                          </div>
                     </div>
                </div>
@@ -92,9 +123,10 @@
                          <div class="wow fadeInUp section-title" data-wow-delay="0.6s">
                               <h3>Exposiciones</h3>
                                <h4>"En <strong>OSOC </strong>está diseñado para desafiar la percepción, conectar con las emociones más profundas y celebrar el poder transformador del arte.<!-- Desde instalaciones lumínicas y obras interactivas hasta talleres creativos y recorridos guiados, OSOC no es solo un museo; es una experiencia sensorial que invita a soñar, crear y reflexionar..." --></h4>
+                               <img class="img-responsive" src="images/ataquilla.png" alt="entrada" id="imgentrada" >
                          </div>
                          <div class="wow fadeInUp" data-wow-delay="0.8s">
-                                        <img class="img-responsive" src="images/taquilla.png" alt="entrada" id="imgentrada">
+                                        
                          </div>
                     </div>
                </div>
@@ -112,102 +144,103 @@
                <div class="col-md-12 col-sm-12">
                     <!-- SECTION TITLE -->
                     <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
-                         
+                         <h3 id="os" style="font-size: 500%;">OS</h3>
                          <p><h1> "Desde instalaciones lumínicas y obras interactivas hasta talleres creativos y recorridos guiados, OSOC no es solo un museo; es una experiencia sensorial que invita a soñar, crear y reflexionar..."</h1>
                               
                               </p>
                     </div>
                </div>
 
-               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.4s">
-                    <!-- WORK THUMB -->
-                    <div class="work-thumb">
-                         <h3 id="os">OS</h3>
-                         <h4> <strong>Acceso Principal</strong></h4>
-                         <a href="images/entrada.png" class="image-popup">
-                              <img src="images/entradaps.png" class="img-responsive" alt="Acceso principal">
-                         </a>
-                         <h4 id="ostext">  Este nivel representa el origen de las ideas y la oscuridad como fuente de inspiración. Es un espacio cerrado, íntimo y envolvente que prepara a los visitantes para el viaje que emprenderán en los niveles superiores.</h4>
-                    </div>
-                    
-                    <h4> <strong>Planta Baja</strong></h4>
-               </div>
+               
 
                <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.6s">
                     <!-- esta es la panoramica -->
                     <div class="work-thumb">
-                              <div id="panorama" style="width: 100%; height: 500px;"></div>
+                         
+                         <h4 id="ostext">  Este nivel representa el origen de las ideas y la oscuridad como fuente de inspiración. Es un espacio cerrado, íntimo y envolvente que prepara a los visitantes para el viaje que emprenderán en los niveles superiores.</h4>
+                              <div id="panorama" style="width: 100%; height: 500px; border-radius: 10px;"></div>
                               <!-- <img src="images/Panorama1_000-enhanced.png" class="img-responsive" alt="Entrada Principal"> -->
                     </div>
-
-                    <script>
-                         let viewer;
-                     
-                         function startPanorama() {
-                             viewer = pannellum.viewer('panorama', {
-                                 type: "equirectangular",
-                                 panorama: "images/panfinal.png",
-                                 autoLoad: true,
-                                 showZoomCtrl: true,
-                                 showFullscreenCtrl: true,  // Habilitar pantalla completa
-                                 yaw: 180,  // Ángulo inicial
-                                 hfov: 110,  // Campo de visión
-                                 pitch: 0,
-                                 autoRotate: 2,
-                                 vr: true,  // Habilitar modo VR
-                                 showControls: true,  // Habilita los controles
-                                 touchPan: true,  // Permitir mover con el dedo
-                                 orientationOnByDefault: true  // Habilitar giroscopio
-                             });
-                         }
-                     
-                         function requestGyroscopePermission() {
-                             if (typeof DeviceMotionEvent.requestPermission === 'function') {
-                                 DeviceMotionEvent.requestPermission()
-                                     .then(response => {
-                                         if (response === 'granted') {
-                                             console.log("Giroscopio activado");
-                                             startPanorama();
-                                         } else {
-                                             alert("Acceso al giroscopio denegado. Actívalo en la configuración del navegador.");
-                                         }
-                                     })
-                                     .catch(console.error);
-                             } else {
-                                 startPanorama(); // Si el permiso no es necesario, inicia el visor directamente
-                             }
-                         }
-                     
-                         // Iniciar el panorama cuando se cargue la página
-                         window.addEventListener("load", requestGyroscopePermission);
-                     </script>
-                     
-
-                    <h4>Ala B</h4>
+                    <h4>Inmersión 360</h4>
                </div>
 
-               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.6s">
                     <!-- WORK THUMB -->
                     <div class="work-thumb">
-                         <a href="images/os-enhanced.png "class="image-popup">
-                              <img src="images/os-enhanced.png" class="img-responsive" alt="Photography">
-                              <img src="images/bia.png" class="img-responsive" alt="Ala B" style=" margin-top:5px">
+                         
+                         <a href="images/aentrada.png" class="image-popup">
+                              <img src="images/aentrada.png" class="img-responsive" alt="Acceso principal">
                          </a>
+                         <h4> <strong>Acceso Principal PB</strong></h4>
+                         
                     </div>
                </div>
 
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.6s">
+                    <!-- WORK THUMB -->
+                    <div class="work-thumb">
+                         <a href="images/alab.png "class="image-popup">     
+                         <img src="images/alab.png" class="img-responsive" alt="Ala A"></a>
+                              <h4><strong>Ala este</strong></h4>
+                    </div>
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.7s">
+                    <div class="work-thumb">
+                         <a href="images/acenter.png" class="image-popup">
+                         <img src="images/acenter.png" class="img-responsive" alt="Centro de planta baja" style=" margin-top:5px"></a>
+                                   <h4>Centro PB</h4>
+                    </div>
+               </div>
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
+                    <div class="work-thumb">
+                         <a href="images/alaa.png" class="image-popup"> <img src="images/alaa.png" class="img-responsive" alt="Ala B" style=" margin-top:5px"></a>
+                             <h4>Punto Centrico</h4>
+                    </div>
+               </div>
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.9s">
+                    <div class="work-thumb">
+                             <a href="images/stairss.png" class="image-popup"> <img src="images/stairss.png" class="img-responsive" alt="Ala B" style=" margin-top:5px"></a>
+                                   <h4>Ala Norte</h4>
+                    </div>
+               </div>
+
+               
+                              <div id="animationfinal" class="animate__animated animate__zoomIn " >
+                                   <h2 style="color: #d7b065; background-color:rgba(0, 0, 0, 0.082); border-radius: 20px; border: 1px solid; box-shadow:10px 15px 10px rgba(44, 44, 44, 0.568) ;" class="work-thumb" class="animate__animated animate__zoomIn" >"En la oscuridad, los sueños toman forma y la imaginación cobra vida."</h2>
+                              </div>
+                    </div>
+               </div>
+
+               <!-- Level one Origen -->
+
+          <div class="fadeInUp col-md-3 col-sm-6"
+          data-wow-delay="0.8s" id="levelone">
                <div class="work-thumb">
-                    <a href="images/facadaia.png" class="image-popup">
+                    <h3 id="origen" style="font-size: 500%;">O</h3>
+                    <h4 id="ostext">
+                         Explora el <strong>origen</strong> de las ideas y las civilizaciones en un espacio lleno de contrastes. El Nivel 1 de OSOC combina obras que representan los inicios de la humanidad con piezas contemporáneas y aleatorias, creando un diálogo entre lo antiguo y lo moderno. Aquí, el arte no tiene reglas, y cada obra te invita a reflexionar sobre el pasado y el presente.
+                     </h4>
+                     <div id="panoramalvone" style="width: 100%; height: 500px; border-radius: 10px;"></div>
+                     <h4>Inmersión 360 nivel 1</h4>
                     </a>
                </div>
+          </div>
+               
                <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
-                    <!-- WORK THUMB -->
                     <div class="work-thumb">
-                         <a href="images/work-" class="image-popup">
-                              <img src="images/work-" class="img-responsive" alt="Cinematography">
+                         <a href="images/pb/skynivelone.png" class="image-popup">
+                              <img src="images/pb/skynivelone.png" class="img-responsive" alt="Vista alta">
                          </a>
+                         <h4>Vista Completa</h4>
                     </div>
-                    <h4>Cinematography</h4>
+               </div>
+
+               <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
+                    <div class="work-thumb">
+                         <a href="images/pb/gioconda.png" class="image-popup">
+                              <img src="images/pb/gioconda.png" class="img-responsive" alt="Gioconda">
+                         </a>
+                         <h4>Gioconda</h4>
+                    </div>
                </div>
 
           </div>
@@ -271,55 +304,6 @@
                     </div>
                </div>
 
-               <script>
-                    document.getElementById("contact-form").addEventListener("submit", function(event) {
-                        event.preventDefault(); // Evita la recarga de la página
-                
-                        emailjs.init("TV53dC7ZQsax8xKaF"); // Tu Public Key
-                        console.log("EmailJS inicializado.");
-                
-                        const formData = {
-                            name: document.querySelector("[name='name']").value,
-                            email: document.querySelector("[name='email']").value,
-                            date: document.querySelector("[name='date']") ? document.querySelector("[name='date']").value : "Fecha no proporcionada",
-                            time: document.querySelector("[name='time']").value ,
-                            personas: document.querySelector("[name='personas']").value ,
-                            nivel: document.querySelector("[name='nivel']").value ,
-                            message: document.querySelector("[name='message']").value
-                        };
-                
-                        console.log("Datos del formulario:", formData);
-                
-                        // ✉️ Enviar correo al administrador
-                        emailjs.send("service_491nysh", "template_ssz7tiq", formData)
-                        .then(function(response) {
-                            console.log("Correo enviado al admin:", response);
-                            
-                            // ✅ Enviar correo de confirmación al usuario
-                            return emailjs.send("service_491nysh", "template_gtavlbx", formData);
-                        })
-                        .then(function(response) {
-                            console.log("Correo de confirmación enviado al usuario:", response);
-                            
-                            // Mostrar la alerta de éxito con SweetAlert
-                            Swal.fire({
-                                title: "¡Éxito!",
-                                text: "¡Tu visita ha sido agendada! Revisa tu correo.",
-                                icon: "success",
-                                confirmButtonText: "Aceptar"
-                            });
-                
-                            document.getElementById("contact-form").reset(); // Limpia el formulario
-                        })
-                        .catch(function(error) {
-                            console.error("Error en EmailJS:", error);
-                            alert("Hubo un error al enviar los correos.");
-                        });
-                    });
-                </script>
-                
-                    
-
           </div>
      </div>
 </section>
@@ -340,7 +324,8 @@
                <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.4s">
                     <div class="support-cus">
                          <h4>Ubicación</h4>
-                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3163.9839946980724!2d-99.02590240977631!3d19.428287869992598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1739931045535!5m2!1ses-419!2smx" width="95%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="mapa"></iframe>
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3163.9839946980724!2d-99.02590240977631!3d19.428287869992598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1739931045535!5m2!1ses-419!2smx" width="95%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="mapa"
+                         sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
                         <a href="https://maps.app.goo.gl/iy6BGzWDoPTJnhCT8"><p>57205 Cdad. Jardín, Méx</p></a> 
                     </div>
                     <div class="support-cus">
@@ -394,6 +379,7 @@
 <script src="js/custom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/script.js" ></script>
 
 
 </body>
