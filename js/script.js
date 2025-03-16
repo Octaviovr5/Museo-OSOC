@@ -49,7 +49,7 @@ let viewer, viewerone;
 function startPanorama() {
     viewer = pannellum.viewer('panorama', {
         type: "equirectangular",
-        panorama: "images/panfinal.png",
+        panorama: "images/panfinal.jpg",
         autoLoad: true,
         showZoomCtrl: true,
         showFullscreenCtrl: true,
@@ -198,17 +198,5 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     });
 });
 
-
-// css3 para la panoramica en ios
-document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(() => {
-      let panoContainer = document.getElementById("panorama");
-      let canvas = panoContainer.querySelector("canvas");
-
-      if (canvas) {
-          canvas.style.transform = "translateZ(0)"; // Forzar uso de CSS3 en lugar de WebGL
-      }
-  }, 1000);
-});
 
 
