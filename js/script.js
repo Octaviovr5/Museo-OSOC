@@ -314,6 +314,63 @@ document.addEventListener("DOMContentLoaded", function () {
           startPanoramaLV();
       }
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        let panoContainer = document.getElementById("panorama");
+        let canvas = panoContainer?.querySelector("canvas");
+
+        if (canvas) {
+            canvas.style.willChange = "transform";
+            canvas.style.transform = "translateZ(0)"; // Evita problemas con WebGL en Safari
+            canvas.style.backfaceVisibility = "hidden"; // Mejora el rendimiento en iOS
+        }
+    }, 1000);
+});
+
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        console.log("Página en segundo plano, pausando panorama...");
+        if (viewer) viewer.stopAutoRotate();
+        if (viewerone) viewerone.stopAutoRotate();
+    } else {
+        console.log("Página activa, reanudando panorama...");
+        if (viewer) viewer.startAutoRotate();
+        if (viewerone) viewerone.startAutoRotate();
+    }
+});
+
+document.addEventListener("touchmove", function (event) {
+    event.preventDefault();
+}, { passive: false });
+
+
+  function requestGyroscopePermission() {
+    if (typeof DeviceMotionEvent.requestPermission === "function") {
+        DeviceMotionEvent.requestPermission()
+            .then(response => {
+                if (response === "granted") {
+                    console.log("Giroscopio activado");
+                    startPanorama();
+                    startPanoramaLV();
+                } else {
+                    alert("Acceso al giroscopio denegado. Actívalo en la configuración del navegador.");
+                }
+            })
+            .catch(err => {
+                console.error("Error al solicitar permiso de giroscopio:", err);
+                alert("Tu navegador no permite el acceso al giroscopio automáticamente.");
+            });
+    } else {
+        // Si no es necesario el permiso en este navegador, iniciamos directamente
+        startPanorama();
+        startPanoramaLV();
+    }
+}
+
+// Ejecutar la solicitud de permisos al tocar la pantalla (iOS lo requiere)
+document.addEventListener("click", requestGyroscopePermission, { once: true });
+
   
   // 📌 Optimización para iOS
   document.addEventListener("visibilitychange", function () {
