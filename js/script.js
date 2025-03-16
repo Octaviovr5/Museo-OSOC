@@ -340,11 +340,6 @@ document.addEventListener("visibilitychange", function () {
     }
 });
 
-document.addEventListener("touchmove", function (event) {
-    event.preventDefault();
-}, { passive: false });
-
-
   function requestGyroscopePermission() {
     if (typeof DeviceMotionEvent.requestPermission === "function") {
         DeviceMotionEvent.requestPermission()
