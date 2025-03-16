@@ -51,6 +51,29 @@
 
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+     <div id="start-screen" style="
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 1000;">
+    <button onclick="requestGyroscopePermission()" style="
+        background: #ff5733;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 10px;
+    ">Toca para iniciar</button>
+</div>
+
 
 <!-- PRE LOADER -->
 <!-- <div class="preloader">
