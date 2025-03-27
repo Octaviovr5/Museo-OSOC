@@ -41,6 +41,8 @@
 <!-- Imagen 360 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.min.js"></script>
 
 <!-- animate csss -->
 <link
@@ -160,8 +162,24 @@
                          <h4 id="ostext">  Este nivel representa el origen de las ideas y la oscuridad como fuente de inspiración. Es un espacio cerrado, íntimo y envolvente que prepara a los visitantes para el viaje que emprenderán en los niveles superiores.</h4>
                               <div id="panorama" style="width: 100%; height: 500px; border-radius: 10px;"></div>
                               <!-- <img src="images/Panorama1_000-enhanced.png" class="img-responsive" alt="Entrada Principal"> -->
+
+                              <div id="panoramaframe">
+                                   <!-- Escena A-Frame embebida -->
+                                   <a-scene embedded>
+                                       <!-- Imagen 360° (reemplaza "tu-imagen-360.jpg" con tu URL) -->
+                                       <a-sky src="images/panfinal.jpg" rotation="0 -90 0"></a-sky>
+                                       <!-- Controles para móvil/escritorio -->
+                                       <a-entity 
+                                           camera 
+                                           look-controls 
+                                           touch-controls 
+                                           position="0 0 0"
+                                           wasd-controls="enabled: false"  
+                                       ></a-entity>
+                                   </a-scene>
+                               </div>
+                               <h4>Inmersión 360 nivel 1</h4>
                     </div>
-                    <h4>Inmersión 360</h4>
                </div>
 
                <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.6s">

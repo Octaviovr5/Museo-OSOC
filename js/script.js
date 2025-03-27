@@ -57,10 +57,10 @@ function startPanorama() {
         hfov: 90,
         pitch: 0,
         autoRotate: 3,
-        // vr: true,
+        vr: true,
         showControls: true,
         touchPan: true,
-        orientationOnByDefault: false
+        orientationOnByDefault: true
     });
 
     viewer.startOrientation();
