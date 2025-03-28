@@ -198,5 +198,21 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     });
 });
 
+// OPTIMMIZACION PARA DISPOSITIVOS MOVILES
+// Detecta si es móvil y desactiva animaciones
+function disableAnimationsOnMobile() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile && window.innerWidth <= 768) {
+    document.querySelectorAll('.wow, .animate__animated').forEach(element => {
+      element.classList.remove('wow', 'animate__animated');
+    });
+    
+    // Opcional: Remueve la librería de animaciones
+    const animateCSS = document.querySelector('link[href*="animate.min.css"]');
+    if (animateCSS) animateCSS.remove();
+  }
+}
 
-
+// Ejecuta al cargar y al redimensionar
+window.addEventListener('load', disableAnimationsOnMobile);
+window.addEventListener('resize', disableAnimationsOnMobile);
