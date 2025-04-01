@@ -571,7 +571,11 @@ footer .dash-line {
   h2 {
     font-size: 22px;
   }
-  
+
+  #panorama, #panoramalvone {
+    height: 600px !important; /* El doble de altura en móviles */
+    min-height: 400px; /* Fuerza la altura mínima */
+  }
   /* Optimización de footer */
   footer .col-md-4, 
   footer .col-md-6 {

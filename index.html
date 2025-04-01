@@ -12,7 +12,7 @@
 <meta name="keywords" content="arte contemporáneo, exposiciones, museo, creatividad, OSOC">
 <meta name="author" content="Octavio Velazquez">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="icon" type="image/png" href="images/museo.png">
+<link rel="icon" type="image/png" href="https://i.imgur.com/QxXRjPn.jpeg">
 
 <!-- Open Graph (Facebook & WhatsApp) -->
 <meta property="og:title" content="Museo OSOC">
@@ -41,7 +41,7 @@
 <!-- Imagen 360 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
-<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.min.js"></script>
 
 <!-- animate csss -->
@@ -73,7 +73,6 @@
 <div class="container">
      <div class="row">
           <section id="home" class="parallax-section">
-
                <div class="col-md-offset-1 col-md-10 col-sm-12">
                     <div class="home-wrapper">
                          <h3 class="wow fadeInUp" data-wow-delay="0.3s">Museo OSOC </h3> 
@@ -82,7 +81,6 @@
                          <h3 class="wow fadeInUp" data-wow-delay="0.8s" id="origen">Origen, Sueño, Oscuridad y Creación</h3>
                     </div>
                </div>
-
           </section>
      </div>
 </div>
@@ -94,7 +92,7 @@
           <div class="row">
 
                <div class="col-md-4 col-sm-8">
-                    <img src="images/maquetaterbl.png" class="wow fadeInUp img-responsive" data-wow-delay="1s" alt="about image">
+                    <img src="images/maquetaterbl.png" class="wow fadeInUp img-responsive" data-wow-delay="1s" alt="Maqueta museo">
                     <div class="wow fadeInUp" data-wow-delay="0.4s">
                          <h4>Sobre el Museo</h4>
                          <p> "Museo <b>OSOC</b> es un espacio innovador donde el arte contemporáneo se vive, se explora y se transforma. Su arquitectura vanguardista y sus exposiciones inmersivas desafían las percepciones, creando experiencias únicas para el público. Aquí, el arte no solo se observa, sino que se experimenta a través de instalaciones interactivas, tecnología y expresiones audaces."</p>
@@ -160,7 +158,7 @@
                     <div class="work-thumb">
                          
                          <h4 id="ostext">  Este nivel representa el origen de las ideas y la oscuridad como fuente de inspiración. Es un espacio cerrado, íntimo y envolvente que prepara a los visitantes para el viaje que emprenderán en los niveles superiores.</h4>
-                              <div id="panorama" style="width: 100%; height: 500px; border-radius: 10px;"></div>
+                              <div id="panorama" style="width: 100%; height: auto; border-radius: 10px;"></div>
                               <!-- <img src="images/Panorama1_000-enhanced.png" class="img-responsive" alt="Entrada Principal"> -->
 
                               <div id="panoramaframe">
@@ -237,7 +235,7 @@
                     <h4 id="ostext">
                          Explora el <strong>origen</strong> de las ideas y las civilizaciones en un espacio lleno de contrastes. El Nivel 1 de OSOC combina obras que representan los inicios de la humanidad con piezas contemporáneas y aleatorias, creando un diálogo entre lo antiguo y lo moderno. Aquí, el arte no tiene reglas, y cada obra te invita a reflexionar sobre el pasado y el presente.
                      </h4>
-                     <div id="panoramalvone" style="width: 100%; height: 500px; border-radius: 10px;"></div>
+                     <div id="panoramalvone" style="width: 100%; height: auto; border-radius: 10px;"></div>
                      <h4>Inmersión 360 nivel 1</h4>
                     </a>
                </div>
@@ -399,7 +397,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="js/script.js" ></script>
 <script src="https://www.marzipano.net/demos/js/marzipano.js"></script>
-<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<!-- Para checar memoria ram -->
+<script src="https://unpkg.com/performance-memory@1.0.0/dist/performance-memory.min.js"></script>
 
 </body>
 </html>
