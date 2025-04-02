@@ -311,7 +311,9 @@ a:hover, a:active, a:focus {
 
 .home-wrapper {
   background: rgba(250,250,250,0.8);
-  padding: 32px 12px;
+  padding: 50% 12px;
+  width: 100%;
+  height: 100vh;
 }
 
 
@@ -547,21 +549,28 @@ footer .dash-line {
 @media (max-width: 768px) {
   /* Optimización móvil avanzada */
   #home {
-    background: url('../images/museo.png') center center/cover no-repeat;
-    background-attachment: scroll;
+    background: url('/images/museo.png') center center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     height: 75vh;
-    min-height: -webkit-fill-available;
+    min-height: 100vh;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+    padding-top: 15%;
+}
+
   
   .home-wrapper {
     background: rgba(208, 216, 219, 0.85);
     margin: 60px 12px;
     padding: 40px 12px;
     width: calc(100% - 24px);
+    align-items: center;
+    justify-content: center;
   }
   
   h1 {
@@ -574,7 +583,7 @@ footer .dash-line {
 
   #panorama, #panoramalvone {
     height: 600px !important; /* El doble de altura en móviles */
-    min-height: 400px; /* Fuerza la altura mínima */
+    min-height: 600px; /* Fuerza la altura mínima */
   }
   /* Optimización de footer */
   footer .col-md-4, 

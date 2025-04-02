@@ -49,7 +49,7 @@ let viewer, viewerone;
 function startPanorama() {
     viewer = pannellum.viewer('panorama', {
         type: "equirectangular",
-        panorama: "images/panfinal.jpg",
+        panorama: "images/panfinal.webp",
         autoLoad: true,
         showZoomCtrl: true,
         showFullscreenCtrl: true,
@@ -70,7 +70,7 @@ function startPanorama() {
 function startPanoramaLV() {
     viewerone = pannellum.viewer('panoramalvone', {
         type: "equirectangular",
-        panorama: "images/pb/upanoramica.png",
+        panorama: "images/pb/upanoramica.webp",
         autoLoad: true,
         showZoomCtrl: true,
         showFullscreenCtrl: true,
