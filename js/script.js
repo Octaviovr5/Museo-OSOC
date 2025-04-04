@@ -43,7 +43,7 @@ setInterval(() => {
 
 
 // imagenes 360 PB
-let viewer, viewerone;
+let viewer, viewerone, viewernt;
 
 // Iniciar panorama principal (panorama)
 function startPanorama() {
@@ -87,6 +87,27 @@ function startPanoramaLV() {
     viewerone.startOrientation();
 }
 
+// Iniciar tercer panorama (panoramaf)
+function startPanoramaLN() {
+  viewernt = pannellum.viewer('panoramaf', {
+      type: "equirectangular",
+      panorama: "images/lastlevel/norte.webp",
+      autoLoad: true,
+      showZoomCtrl: true,
+      showFullscreenCtrl: true,
+      yaw: 150,
+      hfov: 90,
+      pitch: 0,
+      autoRotate: 3,
+      vr: true,
+      showControls: true,
+      touchPan: true,
+      orientationOnByDefault: true
+  });
+
+  viewernt.startOrientation();
+}
+
 // Solicitar permiso de giroscopio y cargar panoramas
 function requestGyroscopePermission() {
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -96,6 +117,7 @@ function requestGyroscopePermission() {
                     console.log("Giroscopio activado");
                     startPanorama();
                     startPanoramaLV(); // Inicia el segundo panorama
+                    startPanoramaLN();
                 } else {
                     alert("Acceso al giroscopio denegado. Actívalo en la configuración del navegador.");
                 }
@@ -104,6 +126,7 @@ function requestGyroscopePermission() {
     } else {
         startPanorama();
         startPanoramaLV();
+        startPanoramaLN();
     }
 }
 

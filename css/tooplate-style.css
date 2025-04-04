@@ -549,7 +549,7 @@ footer .dash-line {
 @media (max-width: 768px) {
   /* Optimización móvil avanzada */
   #home {
-    background: url('/images/museo.png') center center no-repeat;
+    background: url('../images/museo.png') center center no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -581,7 +581,7 @@ footer .dash-line {
     font-size: 22px;
   }
 
-  #panorama, #panoramalvone {
+  #panorama, #panoramalvone, #panoramaf {
     height: 600px !important; /* El doble de altura en móviles */
     min-height: 600px; /* Fuerza la altura mínima */
   }
@@ -613,7 +613,8 @@ footer .dash-line {
   
   /* Optimización de panorámicas */
   #panorama, 
-  #panoramalvone {
+  #panoramalvone
+  #panoramaf {
     height: 250px !important;
   }
 }
