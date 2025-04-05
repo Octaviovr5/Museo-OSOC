@@ -63,7 +63,6 @@ function startPanorama() {
         orientationOnByDefault: true
     });
 
-    viewer.startOrientation();
 }
 
 // Iniciar segundo panorama (panoramalvone)
@@ -84,7 +83,7 @@ function startPanoramaLV() {
         orientationOnByDefault: true
     });
 
-    viewerone.startOrientation();
+
 }
 
 // Iniciar tercer panorama (panoramaf)
@@ -105,7 +104,6 @@ function startPanoramaLN() {
       orientationOnByDefault: true
   });
 
-  viewernt.startOrientation();
 }
 
 // Solicitar permiso de giroscopio y cargar panoramas
