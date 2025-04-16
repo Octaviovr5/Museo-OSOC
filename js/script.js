@@ -220,20 +220,41 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 });
 
 // OPTIMMIZACION PARA DISPOSITIVOS MOVILES
-// Detecta si es móvil y desactiva animaciones
+// OPTIMIZACIÓN PARA DISPOSITIVOS MÓVILES
 function disableAnimationsOnMobile() {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
   if (isMobile && window.innerWidth <= 768) {
-    document.querySelectorAll('.wow, .animate__animated').forEach(element => {
+    // 1. Remueve clases de WOW y animate.css
+    document.querySelectorAll('.wow, [class*="animate__"]').forEach(element => {
       element.classList.remove('wow', 'animate__animated');
+      
+      // 2. Remueve todas las clases que empiecen con animate__
+      element.classList.forEach(cls => {
+        if (cls.startsWith('animate__')) {
+          element.classList.remove(cls);
+        }
+      });
+
+      // 3. Elimina atributos de WOW
+      element.removeAttribute('data-wow-delay');
+      element.removeAttribute('data-wow-duration');
+      element.removeAttribute('data-wow-offset');
     });
-    
-    // Opcional: Remueve la librería de animaciones
+
+    // 4. Remueve la hoja de estilo de animate.css si está presente
     const animateCSS = document.querySelector('link[href*="animate.min.css"]');
     if (animateCSS) animateCSS.remove();
+
+    // 5. Evita que WOW.js se ejecute
+    if (typeof WOW !== 'undefined') {
+      WOW.prototype.init = function () {
+        return false;
+      };
+    }
   }
 }
 
-// Ejecuta al cargar y al redimensionar
+// Ejecuta en carga y en resize
 window.addEventListener('load', disableAnimationsOnMobile);
 window.addEventListener('resize', disableAnimationsOnMobile);

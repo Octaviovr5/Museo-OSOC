@@ -109,7 +109,7 @@
                          <div class="wow fadeInUp section-title" data-wow-delay="0.6s">
                               <h3 id="letra-segundotema">OSOC</h3>
                               <h2>"Cada exposición en OSOC es una ventana al futuro. Con artistas que rompen moldes y desafían lo conocido, aquí experimentarás el arte como nunca antes."</h2>
-                              <img class="img-responsive" src="images/facadaia.webp" alt="entrada" id="imgentrada" >
+                              <img class="img-responsive" src="images/fachadacentral.png" alt="entrada" id="imgentrada" >
                          </div>
                          <div class="wow fadeInUp" data-wow-delay="0.8s">
                                    <!-- Un punto de encuentro para artistas y amantes del arte, OSOC ofrece exposiciones, talleres y eventos que exploran las tendencias más actuales. Descubre un museo que rompe las reglas y redefine la creatividad.</h4> -->
@@ -123,7 +123,42 @@
                          <div class="wow fadeInUp section-title" data-wow-delay="0.6s">
                               <h3>Exposiciones</h3>
                                <h4>"En <strong>OSOC </strong>está diseñado para desafiar la percepción, conectar con las emociones más profundas y celebrar el poder transformador del arte.<!-- Desde instalaciones lumínicas y obras interactivas hasta talleres creativos y recorridos guiados, OSOC no es solo un museo; es una experiencia sensorial que invita a soñar, crear y reflexionar..." --></h4>
-                               <img class="img-responsive" src="images/ataquilla.webp" alt="entrada" id="imgentrada" >
+                               <div style="position: relative; display: inline-block;">
+                                   <video class="img-responsive" id="videntrada" autoplay loop muted playsinline style="display: block; border-radius: 5px;">
+                                     <source src="images/fachada.mp4" type="video/mp4">
+                                     Tu navegador no soporta la etiqueta de video.
+                                   </video>
+                                   <button id="fullscreenBtn" style="
+                                     position: absolute;
+                                     bottom: 10px;
+                                     right: 10px;
+                                     padding: 6px 12px;
+                                     background-color: rgba(0, 0, 0, 0.6);
+                                     color: white;
+                                     border: none;
+                                     border-radius: 4px;
+                                     cursor: pointer;
+                                   ">
+                                     ⛶
+                                   </button>
+                                 </div>
+                                 <script>
+                                   const video = document.getElementById('videntrada');
+                                   const btn = document.getElementById('fullscreenBtn');
+                                 
+                                   btn.addEventListener('click', () => {
+                                     if (video.requestFullscreen) {
+                                       video.requestFullscreen();
+                                     } else if (video.webkitRequestFullscreen) {
+                                       video.webkitRequestFullscreen();
+                                     } else if (video.msRequestFullscreen) {
+                                       video.msRequestFullscreen();
+                                     }
+                                   });
+                                 </script>
+                                 
+                                 
+                                 
                          </div>
                          <div class="wow fadeInUp" data-wow-delay="0.8s">
                                         
@@ -314,11 +349,58 @@
                          desafían la realidad. Aquí, lo cotidiano se transforma en extraordinario, y los visitantes se convierten 
                          en cómplices del proceso creativo. Un universo donde las reglas no existen y el arte se vive con todos los sentidos.
                      </h4>
+                      <div class="wow fadeInUp col-md-3 col-sm-6" data-wow-delay="0.8s">
+               <div class="work-thumb">
+                    <div id="videocontainerlv" style="position: relative; display: inline-block;">
+                         <video id="videolv" 
+                                src="images/lastlevel/lv.mp4" 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline 
+                                style="display: block; width: 100%; object-fit: cover;">
+                         </video>
+                       
+                         <button id="fullscreenBtnLv" style="
+                           position: absolute;
+                           bottom: 10px;
+                           right: 10px;
+                           padding: 6px 12px;
+                           background-color: rgba(0, 0, 0, 0.6);
+                           color: white;
+                           border: none;
+                           border-radius: 4px;
+                           cursor: pointer;
+                           font-size: 16px;
+                         ">
+                           ⛶
+                         </button>
+                       </div>
+                       
+                       <script>
+                         const containerLv = document.getElementById('videocontainerlv');
+                         const btnLv = document.getElementById('fullscreenBtnLv');
+                       
+                         btnLv.addEventListener('click', () => {
+                           if (containerLv.requestFullscreen) {
+                             containerLv.requestFullscreen();
+                           } else if (containerLv.webkitRequestFullscreen) {
+                             containerLv.webkitRequestFullscreen();
+                           } else if (containerLv.msRequestFullscreen) {
+                             containerLv.msRequestFullscreen();
+                           } else {
+                             alert("Tu navegador no soporta pantalla completa.");
+                           }
+                         });
+                       </script>
+                       
+               </div>
+          </div>
                      <div id="panoramaf"></div>
                           <!-- Escena A-Frame embebida -->
                           <a-scene embedded>
                               <!-- Imagen 360° (reemplaza "tu-imagen-360.jpg" con tu URL) -->
-                              <a-sky src="images/lastlevel/norte.webp" rotation="0 -90 0"></a-sky>
+                              <a-sky src="images/lastlevel/nt.jpg" rotation="0 -90 0"></a-sky>
                               <!-- Controles para móvil/escritorio -->
                               <a-entity 
                                   camera 
@@ -329,10 +411,11 @@
                               ></a-entity>
                           </a-scene>
                      
-                     <h4>Inmersión 360 nivel 1</h4>
+                     <h4>Inmersión 360 nivel 2 entrada</h4>
                     </a>
                </div>
           </div>
+         
 
           </div>
      </div>

@@ -547,6 +547,14 @@ footer .dash-line {
 }
 
 @media (max-width: 768px) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+@media (max-width: 768px) {
   /* Optimización móvil avanzada */
   #home {
     background: url('../images/museo.png') center center no-repeat;
