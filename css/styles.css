@@ -1,0 +1,617 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700|Playfair+Display');
+
+
+/*---------------------------------------
+  Estilos Base Mejorados              
+-----------------------------------------*/
+:root {
+    --color-primary: #d7b065;
+    --color-dark: #3d3d3f;
+    --color-medium: #575757;
+    --color-light: #878787;
+    --color-bg: #f4f4f4;
+    --transition: all 0.4s ease;
+    --box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: #f4f4f4;
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+  
+  /*---------------------------------------
+    Tipografía Consistente              
+  -----------------------------------------*/
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    margin: 0 0 1rem 0;
+  }
+  
+  h1 {
+    color: var(--color-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    color: var(--color-medium);
+    font-size: 2rem;
+  }
+  
+  h3 {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+  
+  h4 {
+    color: var(--color-medium);
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  
+  p {
+    color: var(--color-light);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /*---------------------------------------
+    Layout y Contenedores Uniformes              
+  -----------------------------------------*/
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+  
+  /* Columnas consistentes */
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, 
+  .col-md-5, .col-md-6, .col-md-7, .col-md-8, 
+  .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    padding: 0 15px;
+    margin-bottom: 30px;
+  }
+  
+  .col-md-12 { width: 100%; }
+  .col-md-11 { width: 91.66666667%; }
+  .col-md-10 { width: 83.33333333%; }
+  .col-md-9 { width: 75%; }
+  .col-md-8 { width: 66.66666667%; }
+  .col-md-7 { width: 58.33333333%; }
+  .col-md-6 { width: 50%; }
+  .col-md-5 { width: 41.66666667%; }
+  .col-md-4 { width: 33.33333333%; }
+  .col-md-3 { width: 25%; }
+  .col-md-2 { width: 16.66666667%; }
+  .col-md-1 { width: 8.33333333%; }
+  
+  /*---------------------------------------
+    Secciones con Estilo Uniforme              
+  -----------------------------------------*/
+  .parallax-section {
+    padding: 80px 0;
+    position: relative;
+  }
+  
+  .section-title {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  /* Contenedores tipo "hoja" */
+  .about-thumb, .work-thumb {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    height: 100%;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Efecto de elevación al hover */
+  .about-thumb:hover, .work-thumb:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  }
+  
+/*---------------------------------------
+  Buttons               
+-----------------------------------------*/
+
+.arrow-btn i {
+    background: #000000;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-top: 32px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  .arrow-btn i:hover {
+    background: #d7b065;
+  }
+  
+  /*---------------------------------------
+  Pre loader section              
+-----------------------------------------*/
+
+.cargador {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.895);
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .cargador .hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Ajusta el tamaño del GIF si es necesario */
+  .spinner img {
+    width: 100%; /* Ajusta el tamaño según necesites */
+    height: auto;
+  }
+  
+  /* .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .spinner {
+    width: 65px;
+    height: 65px;
+    position: relative;
+  } */
+  
+  /* .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65px;
+    height: 65px;
+    margin-top: -32.5px; 
+    margin-left: -32.5px;
+    border-radius: 50%;
+    border: 5px solid #000000; 
+    border-top-color: transparent;
+    animation: spinner 0.9s linear infinite;
+  }  */
+  
+  
+  
+  /* Animación del Spinner */
+  @-webkit-keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+ /*---------------------------------------
+  Home section              
+-----------------------------------------*/
+
+#home {
+    background: url('../images/museo.png') 50% 0 repeat-y fixed;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+     align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    margin: 82px 12px 0 12px;
+  }
+  
+  .home-wrapper {
+    background: rgba(208, 216, 219, 0.85);
+    padding: 50% 12px;
+    width: 100%;
+    height: 100vh;
+  }
+  /*---------------------------------------
+    Sección About (Estilo Base)              
+  -----------------------------------------*/
+  #about .img-responsive {
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  /*---------------------------------------
+    Sección Work (Ajustada para coincidir con About)              
+  -----------------------------------------*/
+  #work {
+    background: var(--color-bg);
+  }
+  
+  /* Títulos grandes OS y O */
+  #os, #origen {
+    font-size: 5rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin: 2rem 0;
+    font-weight: 300;
+    line-height: 1;
+  }
+  
+  /* Texto descriptivo */
+  #ostext {
+    margin-bottom: 1.5rem;
+    color: var(--color-medium);
+    font-weight: 300;
+  }
+  
+  /* Elementos multimedia */
+  #panorama, #panoramalvone, #panoramaframe, #panoramaf {
+    width: 100%;
+    height: 300px;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  /* Videos */
+  #videntrada, #videolv {
+    width: 100%;
+    border-radius: var(--border-radius);
+    display: block;
+  }
+  
+  /* Botón de pantalla completa */
+  #fullscreenBtn, #fullscreenBtnLv {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  #fullscreenBtn:hover, #fullscreenBtnLv:hover {
+    background-color: var(--color-primary);
+  }
+  
+  /*---------------------------------------
+    Elementos Interactivos              
+  -----------------------------------------*/
+  #buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 2rem 0;
+  }
+  
+  #flotante {
+    color: var(--color-medium);
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  #flotante:hover {
+    color: var(--color-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /*---------------------------------------
+  Contact section              
+-----------------------------------------*/
+
+#contact .form-control {
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: none;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.4s;
+  }
+  
+  #contact input {
+    height: 55px;
+  }
+  
+  #contact button#submit {
+    background: #d7b065;
+    border: none;
+    border-radius: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    height: 55px;
+    padding-bottom: 10px;
+    margin-top: 24px;
+  }
+  
+  #contact button#submit:hover {
+    background: #3d3d3f;
+    color: #ffffff;
+  }
+  
+  
+  /*---------------------------------------
+    Footer section              
+  -----------------------------------------*/
+  
+  footer {
+    background: #000000;
+  }
+  
+  footer h4 {
+    color: #f9f9f9;
+  }
+  
+  footer a {
+    color: #aaa;
+  }
+  
+  footer a:hover {
+    color: #fff;
+  }
+  
+  footer .col-md-4 .support-cus:last-child {
+    padding-top: 12px;
+  }
+  
+  footer .col-md-4 .support-cus p {
+    line-height: 20px;
+  }
+  
+  footer .newsletter .form-control {
+    box-shadow: none;
+    transition: all 0.4s ease-in-out;
+    margin-top: 16px;
+    margin-bottom: 2px;
+  }
+  
+  footer .newsletter .form-control:focus {
+    border-bottom-color: #f2f2f2;
+  }
+  
+  footer .newsletter input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0px;
+  }
+  
+  footer .newsletter button {
+    background: #f9f9f9;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    height: 50px;
+  }
+  
+  footer .newsletter button:hover {
+    background: #d7b065;
+    color: #ffffff;
+  }
+  
+  footer .dash-line {
+    border-top: 1px solid #292929;
+    margin-top: 62px;
+    padding-bottom: 52px;
+    position: relative;
+  }
+  
+  
+  /*---------------------------------------
+    Social icon             
+  -----------------------------------------*/
+  
+  .social-icon {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .social-icon li {
+    display: inline-block;
+    list-style: none;
+  }
+  
+  .social-icon li a {
+    background: #f9f9f9;
+    border-radius: 100%;
+    color: #3d3d3f;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    margin: 0px 6px 10px 6px;
+  }
+  
+  .social-icon li a:hover {
+    background: #d7b065;
+    color: #ffffff;
+    transform: scale(1.1);
+  }
+  
+  
+  /*---------------------------------------
+    Responsive Design              
+  -----------------------------------------*/
+  @media (max-width: 992px) {
+    .col-md-3, .col-md-4 {
+      width: 50%;
+    }
+    #home {
+        background: url('../images/museo.png') center center no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+      
+      .home-wrapper {
+        background: rgba(208, 216, 219, 0.85);
+        width: 100%;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+    
+    #os, #origen {
+      font-size: 4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-3, .col-md-4, .col-md-6, .col-md-8 {
+      width: 100%;
+    }
+    
+    /* Optimización móvil avanzada */
+  #home {
+    background: url('../images/museo.png') center center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  
+  .home-wrapper {
+    background: rgba(208, 216, 219, 0.85);
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+
+  #panorama, #panoramalvone, #panoramaf {
+    height: 500px !important; /* El doble de altura en móviles */
+  }
+  /* Optimización de footer */
+  footer .col-md-4, 
+  footer .col-md-6 {
+    width: 100%;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+}
+  
+  @media (max-width: 576px) {
+    #buttons {
+      flex-direction: column;
+    }
+    
+    #flotante {
+      width: 100%;
+    }
+    
+    #os, #origen {
+      font-size: 2.5rem;
+    }
+    
+    .about-thumb, .work-thumb {
+      padding: 20px;
+    }
+  }

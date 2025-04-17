@@ -258,3 +258,32 @@ function disableAnimationsOnMobile() {
 // Ejecuta en carga y en resize
 window.addEventListener('load', disableAnimationsOnMobile);
 window.addEventListener('resize', disableAnimationsOnMobile);
+
+// video 
+const btn = document.getElementById('fullscreenBtn');
+                                 
+btn.addEventListener('click', () => {
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  }
+});
+
+
+const containerLv = document.getElementById('videocontainerlv');
+                         const btnLv = document.getElementById('fullscreenBtnLv');
+                       
+                         btnLv.addEventListener('click', () => {
+                           if (containerLv.requestFullscreen) {
+                             containerLv.requestFullscreen();
+                           } else if (containerLv.webkitRequestFullscreen) {
+                             containerLv.webkitRequestFullscreen();
+                           } else if (containerLv.msRequestFullscreen) {
+                             containerLv.msRequestFullscreen();
+                           } else {
+                             alert("Tu navegador no soporta pantalla completa.");
+                           }
+                         });
