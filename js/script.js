@@ -43,7 +43,7 @@ setInterval(() => {
 
 
 // imagenes 360 PB
-let viewer, viewerone, viewernt;
+let viewer, viewerone, viewernt, viewerEn;
 
 // Iniciar panorama principal (panorama)
 function startPanorama() {
@@ -90,7 +90,27 @@ function startPanoramaLV() {
 function startPanoramaLN() {
   viewernt = pannellum.viewer('panoramaf', {
       type: "equirectangular",
-      panorama: "images/lastlevel/norte.webp",
+      panorama: "images/lastlevel/entrada.jpg",
+      autoLoad: true,
+      showZoomCtrl: true,
+      showFullscreenCtrl: true,
+      yaw: 150,
+      hfov: 90,
+      pitch: 0,
+      autoRotate: 3,
+      vr: true,
+      showControls: true,
+      touchPan: true,
+      orientationOnByDefault: true
+  });
+
+}
+
+// Iniciar cuarto panorama 
+function startPanoramaEn() {
+  viewerEn = pannellum.viewer('panoramaentrada', {
+      type: "equirectangular",
+      panorama: "images/lastlevel/nt.jpg",
       autoLoad: true,
       showZoomCtrl: true,
       showFullscreenCtrl: true,
@@ -116,6 +136,7 @@ function requestGyroscopePermission() {
                     startPanorama();
                     startPanoramaLV(); // Inicia el segundo panorama
                     startPanoramaLN();
+                    startPanoramaEn();
                 } else {
                     alert("Acceso al giroscopio denegado. Actívalo en la configuración del navegador.");
                 }
@@ -125,6 +146,7 @@ function requestGyroscopePermission() {
         startPanorama();
         startPanoramaLV();
         startPanoramaLN();
+        startPanoramaEn();
     }
 }
 
@@ -259,10 +281,53 @@ function disableAnimationsOnMobile() {
 window.addEventListener('load', disableAnimationsOnMobile);
 window.addEventListener('resize', disableAnimationsOnMobile);
 
-// video 
-const btn = document.getElementById('fullscreenBtn');
-                                 
-btn.addEventListener('click', () => {
+
+// Video fachada
+document.getElementById('fullscreenBtn').addEventListener('click', function () {
+  const video = document.getElementById('videntrada');
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  } else {
+    alert("Tu navegador no soporta pantalla completa.");
+  }
+});
+
+
+// Video lv
+document.getElementById('fullscreenBtnLv').addEventListener('click', function () {
+  const video = document.getElementById('videolv');
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  } else {
+    alert("Tu navegador no soporta pantalla completa.");
+  }
+});
+// Video cine
+window.addEventListener('DOMContentLoaded', function () {
+  const video = document.getElementById('videocn');
+  video.playbackRate = 0.65; // Cambia esto según la velocidad que quieras (1 es normal)
+});
+document.getElementById('fullscreenBtnCn').addEventListener('click', function () {
+  const video = document.getElementById('videocn');
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) { /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) { /* IE11 */
+    video.msRequestFullscreen();
+  }
+});
+// video tienda
+document.getElementById('fullscreenBtnPreludio').addEventListener('click', function () {
+  const video = document.getElementById('videoPreludio');
   if (video.requestFullscreen) {
     video.requestFullscreen();
   } else if (video.webkitRequestFullscreen) {
@@ -273,17 +338,81 @@ btn.addEventListener('click', () => {
 });
 
 
-const containerLv = document.getElementById('videocontainerlv');
-                         const btnLv = document.getElementById('fullscreenBtnLv');
-                       
-                         btnLv.addEventListener('click', () => {
-                           if (containerLv.requestFullscreen) {
-                             containerLv.requestFullscreen();
-                           } else if (containerLv.webkitRequestFullscreen) {
-                             containerLv.webkitRequestFullscreen();
-                           } else if (containerLv.msRequestFullscreen) {
-                             containerLv.msRequestFullscreen();
-                           } else {
-                             alert("Tu navegador no soporta pantalla completa.");
-                           }
-                         });
+// Section Carrusel
+
+const track = document.getElementById('carouselTrack');
+const cards = track.children;
+let currentPosition = 0;
+let cardWidth;
+let autoScrollInterval;
+
+// Inicializa tamaños y posición
+function initCarousel() {
+  cardWidth = cards[0].offsetWidth;
+  track.style.transition = 'none';
+  track.style.transform = `translateX(0px)`;
+  currentPosition = 0;
+  setTimeout(() => {
+    track.style.transition = 'transform 0.5s ease';
+  }, 50);
+}
+
+// Avanza el carrusel continuamente
+function moveNext() {
+  currentPosition -= cardWidth;
+  track.style.transform = `translateX(${currentPosition}px)`;
+
+  // Cuando llega a la mitad (fin del carrusel real), resetea
+  if (Math.abs(currentPosition) >= cardWidth * (cards.length / 2)) {
+    setTimeout(() => {
+      track.style.transition = 'none';
+      currentPosition = 0;
+      track.style.transform = `translateX(0px)`;
+      setTimeout(() => {
+        track.style.transition = 'transform 0.5s ease';
+      }, 50);
+    }, 500); // espera a que la animación termine
+  }
+}
+
+// Auto-scroll
+function startAutoScroll() {
+  autoScrollInterval = setInterval(moveNext, 3000);
+}
+
+// Pausa cuando el mouse entra
+track.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+track.addEventListener('mouseleave', startAutoScroll);
+
+window.addEventListener('resize', initCarousel);
+window.addEventListener('load', () => {
+  initCarousel();
+  startAutoScroll();
+});
+
+// Botones
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+
+prevBtn.addEventListener('click', () => {
+  // Retrocede una tarjeta
+  currentPosition += cardWidth;
+  track.style.transform = `translateX(${currentPosition}px)`;
+  
+  // Si se va más allá del inicio, rebobina al final duplicado
+  if (currentPosition > 0) {
+    setTimeout(() => {
+      track.style.transition = 'none';
+      currentPosition = -cardWidth * (cards.length / 2);
+      track.style.transform = `translateX(${currentPosition}px)`;
+      setTimeout(() => {
+        track.style.transition = 'transform 0.5s ease';
+      }, 50);
+    }, 500);
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  moveNext(); // usa la misma función que el auto-scroll
+});
+
