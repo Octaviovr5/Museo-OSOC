@@ -23,77 +23,8 @@ setInterval(() => {
 // Variables globales
 let gyroPermissionRequested = false;
 let viewer, viewerone, viewernt, viewerEn;
-
-// Doble cuadro de dialogo
-// Variable global para controlar si ya mostramos el diálogo
 let permissionDialogShown = false;
-
-function initGyroPermission() {
-    // Si ya mostramos el diálogo o no es iOS, salimos
-    if (permissionDialogShown || typeof DeviceMotionEvent.requestPermission !== 'function') {
-        if (typeof DeviceMotionEvent.requestPermission !== 'function') {
-            loadPanoramas();
-        } else {
-            loadPanoramasWithoutGyro();
-        }
-        return;
-    }
-
-    // Marcamos que ya mostramos el diálogo
-    permissionDialogShown = true;
-
-    // Verificamos si ya existe el overlay para no duplicarlo
-    if (document.getElementById('gyroPermissionOverlay')) {
-        return;
-    }
-
-    // Interfaz personalizada para solicitar permiso
-    const permissionUI = `
-        <div id="gyroPermissionOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;
-            background:rgba(0,0,0,0.9);z-index:9999;display:flex;flex-direction:column;
-            justify-content:center;align-items:center;color:white;padding:20px;text-align:center;">
-            <h2 style="font-size:1.5rem;margin-bottom:1rem;">Experiencia Inmersiva</h2>
-            <p style="margin-bottom:2rem;max-width:500px;">Para disfrutar de la experiencia completa, necesitamos acceso a los sensores de movimiento de tu dispositivo.</p>
-            <div style="display:flex;gap:15px;">
-                <button id="allowGyroBtn" style="padding:12px 25px;background:#4CAF50;color:white;
-                    border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Permitir Acceso</button>
-                <button id="denyGyroBtn" style="padding:12px 25px;background:#f44336;color:white;
-                    border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Continuar Sin Giroscopio</button>
-            </div>
-        </div>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', permissionUI);
-
-    document.getElementById('allowGyroBtn').addEventListener('click', function() {
-        document.getElementById('gyroPermissionOverlay').remove();
-        
-        DeviceMotionEvent.requestPermission()
-            .then(response => {
-                if (response === 'granted') {
-                    loadPanoramas();
-                } else {
-                    loadPanoramasWithoutGyro();
-                }
-            })
-            .catch(error => {
-                console.error("Error al solicitar permiso:", error);
-                loadPanoramasWithoutGyro();
-            });
-    });
-
-    document.getElementById('denyGyroBtn').addEventListener('click', function() {
-        document.getElementById('gyroPermissionOverlay').remove();
-        loadPanoramasWithoutGyro();
-    });
-}
-
-// Modifica tu event listener DOMContentLoaded para asegurar una sola llamada:
-document.addEventListener("DOMContentLoaded", function() {
-    // Elimina cualquier otra llamada a initGyroPermission que puedas tener
-    setTimeout(initGyroPermission, 300);
-});
-
+let permissionRequestInProgress = false;
 
 // Section loader
 document.addEventListener("DOMContentLoaded", function() {
@@ -117,17 +48,26 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(initGyroPermission, 300);
 });
 
-// Gestión de permisos del giroscopio
+// Gestión de permisos del giroscopio - VERSIÓN CORREGIDA
 function initGyroPermission() {
+    // Si ya estamos procesando o ya mostramos el diálogo
+    if (permissionRequestInProgress || permissionDialogShown) {
+        return;
+    }
+
     // Para navegadores que no requieren permiso explícito
     if (typeof DeviceMotionEvent.requestPermission !== 'function') {
         loadPanoramas();
         return;
     }
 
-    // Si ya pedimos permiso, no mostramos de nuevo la interfaz
-    if (gyroPermissionRequested) {
-        loadPanoramasWithoutGyro();
+    // Marcamos que estamos procesando la solicitud
+    permissionRequestInProgress = true;
+    permissionDialogShown = true;
+
+    // Verificamos si ya existe el overlay
+    if (document.getElementById('gyroPermissionOverlay')) {
+        permissionRequestInProgress = false;
         return;
     }
 
@@ -149,8 +89,10 @@ function initGyroPermission() {
 
     document.body.insertAdjacentHTML('beforeend', permissionUI);
 
-    document.getElementById('allowGyroBtn').addEventListener('click', function() {
+    // Función para manejar la respuesta de permitir
+    function handleAllow() {
         gyroPermissionRequested = true;
+        permissionRequestInProgress = true;
         document.getElementById('gyroPermissionOverlay').remove();
         
         DeviceMotionEvent.requestPermission()
@@ -160,18 +102,35 @@ function initGyroPermission() {
                 } else {
                     loadPanoramasWithoutGyro();
                 }
+                permissionRequestInProgress = false;
             })
             .catch(error => {
                 console.error("Error al solicitar permiso:", error);
                 loadPanoramasWithoutGyro();
+                permissionRequestInProgress = false;
             });
-    });
+    }
 
-    document.getElementById('denyGyroBtn').addEventListener('click', function() {
+    // Función para manejar la respuesta de denegar
+    function handleDeny() {
         gyroPermissionRequested = true;
+        permissionRequestInProgress = false;
         document.getElementById('gyroPermissionOverlay').remove();
         loadPanoramasWithoutGyro();
-    });
+    }
+
+    // Asignar event listeners
+    document.getElementById('allowGyroBtn').addEventListener('click', handleAllow);
+    document.getElementById('denyGyroBtn').addEventListener('click', handleDeny);
+
+    // Limpiar event listeners cuando se remueve el overlay
+    const overlay = document.getElementById('gyroPermissionOverlay');
+    if (overlay) {
+        overlay.addEventListener('DOMNodeRemoved', function() {
+            document.getElementById('allowGyroBtn')?.removeEventListener('click', handleAllow);
+            document.getElementById('denyGyroBtn')?.removeEventListener('click', handleDeny);
+        });
+    }
 }
 
 // Función para cargar panoramas CON giroscopio
