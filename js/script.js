@@ -21,8 +21,119 @@ setInterval(() => {
 }, 1000);
 
 // Variables globales
-let gyroPermissionRequested = false;
+// let gyroPermissionRequested = false;
 let viewer, viewerone, viewernt, viewerEn;
+
+// Variables globales para control de permisos
+let gyroPermissionRequested = false;
+let permissionDialogShown = false;
+let permissionRequestInProgress = false; // Nueva variable para controlar solicitudes en curso
+
+// Función mejorada para gestión de permisos
+function initGyroPermission() {
+    // Si ya estamos en proceso de solicitud o ya mostramos el diálogo
+    if (permissionRequestInProgress || permissionDialogShown || gyroPermissionRequested) {
+        return;
+    }
+
+    // Para navegadores que no requieren permiso explícito
+    if (typeof DeviceMotionEvent.requestPermission !== 'function') {
+        loadPanoramas();
+        return;
+    }
+
+    // Marcamos que estamos procesando la solicitud
+    permissionRequestInProgress = true;
+    permissionDialogShown = true;
+
+    // Verificamos si ya existe el overlay
+    if (document.getElementById('gyroPermissionOverlay')) {
+        permissionRequestInProgress = false;
+        return;
+    }
+
+    // Creamos el overlay de permisos
+    const permissionUI = `
+        <div id="gyroPermissionOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;
+            background:rgba(0,0,0,0.9);z-index:9999;display:flex;flex-direction:column;
+            justify-content:center;align-items:center;color:white;padding:20px;text-align:center;">
+            <h2 style="font-size:1.5rem;margin-bottom:1rem;">Experiencia Inmersiva</h2>
+            <p style="margin-bottom:2rem;max-width:500px;">Para disfrutar de la experiencia completa, necesitamos acceso a los sensores de movimiento de tu dispositivo.</p>
+            <div style="display:flex;gap:15px;">
+                <button id="allowGyroBtn" style="padding:12px 25px;background:#4CAF50;color:white;
+                    border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Permitir Acceso</button>
+                <button id="denyGyroBtn" style="padding:12px 25px;background:#f44336;color:white;
+                    border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Continuar Sin Giroscopio</button>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', permissionUI);
+
+    // Manejador para el botón Permitir
+    document.getElementById('allowGyroBtn').addEventListener('click', function handleAllow() {
+        permissionRequestInProgress = true;
+        gyroPermissionRequested = true;
+        
+        try {
+            DeviceMotionEvent.requestPermission()
+                .then(response => {
+                    document.getElementById('gyroPermissionOverlay')?.remove();
+                    if (response === 'granted') {
+                        loadPanoramas();
+                    } else {
+                        loadPanoramasWithoutGyro();
+                    }
+                    permissionRequestInProgress = false;
+                })
+                .catch(error => {
+                    console.error("Error al solicitar permiso:", error);
+                    document.getElementById('gyroPermissionOverlay')?.remove();
+                    loadPanoramasWithoutGyro();
+                    permissionRequestInProgress = false;
+                });
+        } catch (error) {
+            console.error("Error inesperado:", error);
+            document.getElementById('gyroPermissionOverlay')?.remove();
+            loadPanoramasWithoutGyro();
+            permissionRequestInProgress = false;
+        }
+    });
+
+    // Manejador para el botón Denegar
+    document.getElementById('denyGyroBtn').addEventListener('click', function handleDeny() {
+        gyroPermissionRequested = true;
+        permissionRequestInProgress = false;
+        document.getElementById('gyroPermissionOverlay')?.remove();
+        loadPanoramasWithoutGyro();
+    });
+
+    // Limpieza de event listeners cuando se remueve el overlay
+    const overlay = document.getElementById('gyroPermissionOverlay');
+    if (overlay) {
+        overlay.addEventListener('DOMNodeRemoved', function() {
+            document.getElementById('allowGyroBtn')?.removeEventListener('click', handleAllow);
+            document.getElementById('denyGyroBtn')?.removeEventListener('click', handleDeny);
+        });
+    }
+}
+
+// Modificación del event listener DOMContentLoaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Elimina cualquier setTimeout duplicado que puedas tener
+    setTimeout(() => {
+        const preloader = document.querySelector(".cargador");
+        if (preloader) {
+            preloader.classList.add("hidden");
+            setTimeout(() => preloader.remove(), 600);
+        }
+        
+        // Usamos requestAnimationFrame para mejor sincronización
+        requestAnimationFrame(() => {
+            initGyroPermission();
+        });
+    }, 300);
+});
 
 // Section loader
 document.addEventListener("DOMContentLoaded", function() {
